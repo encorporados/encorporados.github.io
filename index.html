@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For You</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+.card {
+  background: rgba(255,255,255,0.08);
+  padding: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  background: rgba(255,255,255,0.15);
+}
+
+.reason {
+  display: none;
+  margin-top: 20px;
+  font-size: 18px;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #e94560;
+  color: white;
+  font-size: 14px;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(10px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Something I Made For You</h1>
+  <div class="subtitle">click the box slowly</div>
+
+  <div class="card" onclick="reveal()">
+    <p>💗 Tap to reveal something</p>
+
+    <div class="reason" id="reason">
+      You make ordinary days feel lighter without even trying.
+    </div>
+  </div>
+
+  <button onclick="nextReason()">Next reason</button>
+</div>
+
+<script>
+const reasons = [
+  "You make ordinary days feel lighter without even trying.",
+  "You stay in my mind longer than you probably should.",
+  "Talking to you feels like a quiet kind of comfort.",
+  "You have a way of making things feel less heavy.",
+  "I appreciate you more than I say out loud."
+];
+
+let index = 0;
+
+function reveal() {
+  document.getElementById("reason").style.display = "block";
+}
+
+function nextReason() {
+  index = (index + 1) % reasons.length;
+  document.getElementById("reason").innerText = reasons[index];
+  document.getElementById("reason").style.display = "block";
+}
+</script>
+
+</body>
+</html>
